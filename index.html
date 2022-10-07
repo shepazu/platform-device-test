@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Device detection</title>
+</head>
+<body>
+  <h1>Device detection</h1>
+
+  <section>
+    <h2>Method 1</h2>
+    <button id="method_1_button">Test Method 1</button>
+    <input id="method_1_output" type="text" readonly>
+  </section>
+
+  <section>
+    <h2>Method 2</h2>
+    <button id="method_2_button">Test Method 2</button>
+    <input id="method_2_output" type="text" readonly>
+  </section>
+
+  <section>
+    <h2>Method 3</h2>
+    <button id="method_3_button">Test Method 3</button>
+    <input id="method_3_output" type="text" readonly>
+  </section>
+  
+
+  <script>
+    window.addEventListener('load', init());
+
+    function init () {
+      document.getElementById('method_1_button').addEventListener('click', method_1);
+      document.getElementById('method_2_button').addEventListener('click', method_2);
+      document.getElementById('method_3_button').addEventListener('click', method_3);
+    }
+
+    function method_1 (event) {
+      const target = event.target;
+      // console.log('target', target.id);
+      const method_1_output = document.getElementById('method_1_output');
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      method_1_output.value = isIOS;
+    }
+
+    function method_2 (event) {
+      const target = event.target;
+      // console.log('target', target.id);
+      const method_2_output = document.getElementById('method_2_output');
+      const isIOS =  !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+      method_2_output.value = isIOS;
+    }
+
+    function method_3 (event) {
+      const target = event.target;
+      // console.log('target', target.id);
+      const method_3_output = document.getElementById('method_3_output');
+      const isIOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+      method_3_output.value = isIOS;
+    }
+
+  </script>
+</body>
+</html>
